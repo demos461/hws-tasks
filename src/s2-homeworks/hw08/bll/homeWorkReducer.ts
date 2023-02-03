@@ -6,15 +6,14 @@ type ActionType =
 
 export const homeWorkReducer = (state: UserType[], action: ActionType): UserType[] => {
     switch (action.type) {
-        case 'sort': { // by name
-            if (action.payload === 'up') {
-                return [...state.sort((a, b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0))]
-            } else {
-                return [...state.sort((a, b) => (a.name < b.name) ? 1 : ((b.name < a.name) ? -1 : 0))]
-            }
+        case 'sort': {
+            return action.payload === 'up'
+                ? [...state].sort((a, b) => a.name < b.name ? 1 : -1)
+                : [...state].sort((a, b) => a.name > b.name ? 1 : -1)
         }
         case 'check': {
-            return state.filter((u) => u.age >= action.payload)
+            const copyState = [...state]
+            return copyState.filter(u => u.age >= 18)
         }
         default:
             return state
