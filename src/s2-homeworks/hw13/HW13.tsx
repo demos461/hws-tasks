@@ -19,6 +19,7 @@ const HW13 = () => {
     const [text, setText] = useState('')
     const [info, setInfo] = useState('')
     const [image, setImage] = useState('')
+    const [isLoading, setIsLoading] = useState(false)
 
     const send = (x?: boolean | null) => () => {
         const url =
@@ -30,6 +31,7 @@ const HW13 = () => {
         setImage('')
         setText('')
         setInfo('...loading')
+        setIsLoading(true)
 
         axios
             .post(url, {success: x})
@@ -59,7 +61,9 @@ const HW13 = () => {
                     setText(e.message)
                     setInfo(e.name)
                 }
-            })
+            }).finally(() => {
+            setIsLoading(false)
+        })
     }
 
     return (
@@ -72,7 +76,7 @@ const HW13 = () => {
                         id={'hw13-send-true'}
                         onClick={send(true)}
                         xType={'secondary'}
-                        disabled={!code}
+                        disabled={isLoading}
                     >
                         Send true
                     </SuperButton>
@@ -80,7 +84,7 @@ const HW13 = () => {
                         id={'hw13-send-false'}
                         onClick={send(false)}
                         xType={'secondary'}
-                        disabled={!code}
+                        disabled={isLoading}
                     >
                         Send false
                     </SuperButton>
@@ -88,7 +92,7 @@ const HW13 = () => {
                         id={'hw13-send-undefined'}
                         onClick={send(undefined)}
                         xType={'secondary'}
-                        disabled={!code}
+                        disabled={isLoading}
                     >
                         Send undefined
                     </SuperButton>
@@ -96,7 +100,7 @@ const HW13 = () => {
                         id={'hw13-send-null'}
                         onClick={send(null)} // имитация запроса на не корректный адрес
                         xType={'secondary'}
-                        disabled={!code}
+                        disabled={isLoading}
                     >
                         Send null
                     </SuperButton>
