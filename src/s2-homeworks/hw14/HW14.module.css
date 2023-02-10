@@ -1,7 +1,10 @@
 .tech {
-
+    font-size: 16px;
+    margin: 5px 0;
 }
 
 .loading {
-
+    font-weight: 300;
+    font-size: 14px;
+    color: #4D4D4D;
 }
