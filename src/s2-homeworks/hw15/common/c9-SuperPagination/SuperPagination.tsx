@@ -36,12 +36,14 @@ const SuperPagination: React.FC<SuperPaginationPropsType> = (
                 page={page}
                 count={lastPage}
                 onChange={onChangeCallback}
+                shape={'rounded'}
+                color={'primary'}
                 hideNextButton
                 hidePrevButton
             />
 
             <span className={s.text1}>
-                показать
+                Показать
             </span>
 
             <SuperSelect
@@ -53,6 +55,7 @@ const SuperPagination: React.FC<SuperPaginationPropsType> = (
                     {id: 10, value: 10},
                 ]}
                 onChange={onChangeSelect}
+                style={{width: '45px', padding: '4px 2px'}}
             />
 
             <span className={s.text2}>

@@ -1,9 +1,12 @@
 .tech {
     width: 50vw;
+    padding: 15px 15px;
+    font-size: 16px;
 }
 
 .developer {
-
+    padding: 15px 15px;
+    font-size: 16px;
 }
 
 .techHeader {
@@ -16,12 +19,30 @@
 
 .row {
     display: flex;
+    border-bottom: 1px solid #E5E5E5;
+}
+
+.row:last-of-type {
+    border-bottom: none;
 }
 
 .rowHeader {
+    margin-top: 35px;
     display: flex;
+    background-color: #E5E5E5;
+    padding: 10px 15px;
+    font-weight: 600;
+    font-size: 14px;
+    align-items: center;
+}
+
+.hw15 {
+    position: relative;
 }
 
 .loading {
-
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

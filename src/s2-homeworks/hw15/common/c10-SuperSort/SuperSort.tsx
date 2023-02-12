@@ -1,7 +1,7 @@
 import React from 'react'
-import {ReactComponent as DownIcon} from '../icons/downIcon.svg'
-import {ReactComponent as UpIcon} from '../icons/upIcon.svg'
-import {ReactComponent as NoneIcon} from '../icons/noneIcon.svg'
+import downIcon from './icons/downIcon.svg'
+import upIcon from './icons/upIcon.svg'
+import noneIcon from './icons/noneIcon.svg'
 
 
 export type SuperSortPropsType = {
@@ -31,17 +31,22 @@ const SuperSort: React.FC<SuperSortPropsType> = (
     }
 
     const icon = sort === down
-        ? <DownIcon/>
+        ? downIcon
         : sort === up
-            ? <UpIcon/>
-            : <NoneIcon/>
+            ? upIcon
+            : noneIcon
 
     return (
         <span
             id={id + '-sort-' + value}
             onClick={onChangeCallback}
         >
-            {icon}
+            <img
+                id={id + '-icon-' + sort}
+                src={icon}
+                alt='sort'
+                style={{marginLeft: '5px', cursor: 'pointer'}}
+            />
         </span>
     )
 }
